@@ -1,0 +1,44 @@
+# Netlify deployment configuration for TechXplain.
+#
+# TechXplain is a static frontend: React + Vite, no backend, no serverless
+# functions, no environment variables, nothing to keep secret. The app uses
+# HashRouter, so client-side routes live after the '#'; the redirects below
+# exist so that clean paths such as /concept/api land on the site instead of a
+# 404, and so that any other path falls back to index.html.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Clean paths like /concept/api or /category/programming are not real files in
+# the build output (the router reads the hash after '#'), so hand them to the
+# app. The ! marks these as 200 rewrites, not HTTP redirects.
+[[redirects]]
+  from = "/concept/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/category/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/explore"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/categories"
+  to = "/index.html"
+  status = 200
+
+# Any other unknown path gets the app too, which then shows its own NotFound
+# page. This must be the last rule.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
