@@ -1,0 +1,14 @@
+# Cloudflare Pages redirects for TechXplain (build output: dist/).
+#
+# TechXplain is a React SPA using hash routing, so its client-side routes live
+# after the '#'. These rules keep the clean paths working when they are opened
+# directly or refreshed, forwarding them to the matching app route.
+#
+# Any other unmatched path is served index.html by Cloudflare Pages' built-in
+# single-page-application behaviour (this project ships no 404.html), and the
+# app then renders its own "not found" screen.
+
+/concept/*  /index.html#/concept/:splat   302
+/category/* /index.html#/category/:splat  302
+/explore    /index.html#/explore          302
+/categories /index.html#/categories       302
