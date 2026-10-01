@@ -1,0 +1,9 @@
+# Cloudflare Pages configuration for TechXplain.
+#
+# This file pins the directory Pages publishes so a stale or empty
+# "build output directory" setting in the dashboard cannot publish the raw
+# repository root instead of the Vite build. The build command itself
+# ("npm run build") and the production branch (main) stay as project settings.
+
+name = "techxplain"
+pages_build_output_dir = "./dist"

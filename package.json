@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "node scripts/verify-build.mjs",
     "preview": "vite preview",
     "check:data": "node scripts/check-data.mjs",
     "audit:copy": "node scripts/audit-copy.mjs"
